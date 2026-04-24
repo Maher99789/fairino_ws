@@ -1,0 +1,44 @@
+[0.007s] Invoking command in '/home/souey-maher/fairino_ws/build/fairino_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/souey-maher/fairino_ws/build/fairino_description -- -j12 -l12
+[0.034s] -- Found ament_cmake: 1.3.14 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.135s] -- Override CMake install command with custom implementation using symlinks instead of copying resources
+[0.138s] -- Found urdf: 2.6.1 (/opt/ros/humble/share/urdf/cmake)
+[0.157s] -- Found ament_lint_auto: 0.12.15 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[0.203s] -- Added test 'flake8' to check Python code syntax and style conventions
+[0.203s] -- Added test 'lint_cmake' to check CMake code style
+[0.203s] -- Added test 'pep257' to check Python code against some of the docstring style conventions in PEP 257
+[0.204s] -- Added test 'xmllint' to check XML markup files
+[0.204s] -- Configuring done
+[0.205s] -- Generating done
+[0.206s] -- Build files have been written to: /home/souey-maher/fairino_ws/build/fairino_description
+[0.234s] Invoked command in '/home/souey-maher/fairino_ws/build/fairino_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/souey-maher/fairino_ws/build/fairino_description -- -j12 -l12
+[0.248s] Invoking command in '/home/souey-maher/fairino_ws/build/fairino_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/souey-maher/fairino_ws/build/fairino_description
+[0.257s] -- Install configuration: ""
+[0.257s] -- Execute custom install script
+[0.257s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/meshes/fairino3_v6/base_link.STL
+[0.258s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/meshes/fairino3_v6/forearm_link.STL
+[0.258s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/meshes/fairino3_v6/shoulder_link.STL
+[0.258s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/meshes/fairino3_v6/upperarm_link.STL
+[0.258s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/meshes/fairino3_v6/wrist1_link.STL
+[0.258s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/meshes/fairino3_v6/wrist2_link.STL
+[0.258s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/meshes/fairino3_v6/wrist3_link.STL
+[0.258s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/urdf/fairino3_v6.urdf
+[0.258s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/urdf_dual_arms/fairino3_dual_arms.urdf.xacro
+[0.258s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/urdf_dual_arms/fairino3_v6_robot.prefixed.urdf.xacro
+[0.259s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/urdf_dual_arms/initial_positions.yaml
+[0.259s] -- Symlinking: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/launch/display.launch.py
+[0.265s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/ament_index/resource_index/package_run_dependencies/fairino_description
+[0.265s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/ament_index/resource_index/parent_prefix_path/fairino_description
+[0.265s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/environment/ament_prefix_path.sh
+[0.265s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/environment/ament_prefix_path.dsv
+[0.265s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/environment/path.sh
+[0.265s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/environment/path.dsv
+[0.265s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/local_setup.bash
+[0.265s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/local_setup.sh
+[0.266s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/local_setup.zsh
+[0.266s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/local_setup.dsv
+[0.266s] -- Symlinking: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/package.dsv
+[0.274s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/ament_index/resource_index/packages/fairino_description
+[0.274s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/cmake/fairino_descriptionConfig.cmake
+[0.274s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/cmake/fairino_descriptionConfig-version.cmake
+[0.275s] -- Up-to-date symlink: /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/package.xml
+[0.277s] Invoked command in '/home/souey-maher/fairino_ws/build/fairino_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/souey-maher/fairino_ws/build/fairino_description

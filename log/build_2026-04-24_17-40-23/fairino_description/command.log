@@ -1,0 +1,4 @@
+Invoking command in '/home/souey-maher/fairino_ws/build/fairino_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/souey-maher/fairino_ws/build/fairino_description -- -j12 -l12
+Invoked command in '/home/souey-maher/fairino_ws/build/fairino_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --build /home/souey-maher/fairino_ws/build/fairino_description -- -j12 -l12
+Invoking command in '/home/souey-maher/fairino_ws/build/fairino_description': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/souey-maher/fairino_ws/build/fairino_description
+Invoked command in '/home/souey-maher/fairino_ws/build/fairino_description' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/opt/ros/humble /usr/bin/cmake --install /home/souey-maher/fairino_ws/build/fairino_description

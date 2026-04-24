@@ -1,0 +1,1 @@
+/home/souey-maher/fairino_ws/build/fairino_description/ament_cmake_environment_hooks/local_setup.zsh
