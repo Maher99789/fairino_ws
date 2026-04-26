@@ -26,7 +26,9 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/base_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/base_link.STL" />
+          
+            
       </geometry>
       <material
         name="">
@@ -40,7 +42,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/base_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/base_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -66,7 +68,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/shoulder_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/shoulder_link.STL" />
       </geometry>
       <material
         name="">
@@ -80,7 +82,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/shoulder_link.STL" />
+         filename="file:///$(find fairino_description)/meshes/fairino3_v6/shoulder_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -135,7 +137,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/upperarm_link.STL" />
+         filename="file:///$(find fairino_description)/meshes/fairino3_v6/upperarm_link.STL" />
       </geometry>
       <material
         name="">
@@ -149,7 +151,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/upperarm_link.STL" />
+         filename="file:///$(find fairino_description)/meshes/fairino3_v6/upperarm_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -204,7 +206,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/forearm_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/forearm_link.STL" />
       </geometry>
       <material
         name="">
@@ -218,7 +220,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/forearm_link.STL" />
+         filename="file:///$(find fairino_description)/meshes/fairino3_v6/forearm_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -273,7 +275,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/wrist1_link.STL" />
+        filename="file:///$(find fairino_description)/meshes/fairino3_v6/wrist1_link.STL" />
       </geometry>
       <material
         name="">
@@ -287,7 +289,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/wrist1_link.STL" />
+         filename="file:///$(find fairino_description)/meshes/fairino3_v6/wrist1_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -342,7 +344,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/wrist2_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/wrist2_link.STL" />
       </geometry>
       <material
         name="">
@@ -356,7 +358,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/wrist2_link.STL" />
+         filename="file:///$(find fairino_description)/meshes/fairino3_v6/wrist2_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -411,7 +413,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/wrist3_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/wrist3_link.STL" />
       </geometry>
       <material
         name="">
@@ -425,7 +427,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/wrist3_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/wrist3_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -458,4 +460,130 @@
       k_position="15"
       k_velocity="10" />
   </joint>
+  
+  <transmission name="trans_j1">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="j1">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor1">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+   <mechanicalReduction>1</mechanicalReduction>
+  </actuator>  
+ </transmission>
+ 
+ <transmission name="trans_j2">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="j2">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor2">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+   <mechanicalReduction>1</mechanicalReduction>
+  </actuator>  
+ </transmission>
+ 
+ <transmission name="trans_j3">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="j3">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor3">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+   <mechanicalReduction>1</mechanicalReduction>
+  </actuator>  
+ </transmission>
+ 
+ <transmission name="trans_j4">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="j4">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor4">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+   <mechanicalReduction>1</mechanicalReduction>
+  </actuator>  
+ </transmission>
+ 
+ <transmission name="trans_j5">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="j5">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor5">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+   <mechanicalReduction>1</mechanicalReduction>
+  </actuator>  
+ </transmission>
+ 
+ <transmission name="trans_j6">
+  <type>transmission_interface/SimpleTransmission</type>
+  <joint name="j6">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+  </joint>
+  <actuator name="motor6">
+   <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+   <mechanicalReduction>1</mechanicalReduction>
+  </actuator>  
+ </transmission>
+ 
+ <ros2_control name="GazeboSystem" type="system">
+  
+      <hardware>
+        <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+      </hardware>
+
+    <joint name="j1">
+      <command_interface name="position">
+        <param name="min">-1.57</param>
+        <param name="max">1.57</param>
+      </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+    </joint>
+    
+    <joint name="j2">
+      <command_interface name="position">
+        <param name="min">-1.57</param>
+        <param name="max">1.57</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    
+    <joint name="j3">
+      <command_interface name="position">
+        <param name="min">-1.57</param>
+        <param name="max">1.57</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="j4">
+      <command_interface name="position">
+        <param name="min">-1.57</param>
+        <param name="max">1.57</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    <joint name="j5">
+      <command_interface name="position">
+        <param name="min">-1.57</param>
+        <param name="max">1.57</param>
+      </command_interface>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+    
+    <joint name="j6">
+        <command_interface name="position">
+            <param name="min">-1.57</param>
+            <param name="max">1.57</param>
+        </command_interface>
+        <state_interface name="position"/>
+        <state_interface name="velocity"/>
+      </joint> 
+ </ros2_control>
+  
 </robot>

@@ -1,136 +1,69 @@
-Dual Arms URDF Loads but Invisible in Gazebo
+Gazebo Classic Dual Arms Setup
 
-1/Environment
+Overview
 
-ROS 2 Distribution: Humble
+This repository documents the process of setting up and simulating a dual-arm robot in Gazebo Classic (Gazebo 11) with ROS 2 Humble. The URDF was exported from SolidWorks and adapted for ROS 2 control integration. The main goal was to achieve a stable simulation environment where the robot loads correctly, controllers can be applied, and Gazebo no longer crashes.
 
-Gazebo Version: Fortress v6.17.1
+Problems Encountered
 
-Workspace: ~/fairino_ws
+Apt Key Errors: Initially, the OSRF repository key was missing, causing NO_PUBKEY errors during apt update.
 
-Package: fairino_description
+Plugin Crashes: The URDF contained both <ros2_control> and <gazebo> plugin blocks loading libgazebo_ros2_control.so. This duplication caused Gazebo to crash with exit code 255.
 
+World File Missing: Gazebo attempted to load my_empty_world.world but the file did not exist, forcing a fallback to the default empty.world.
 
+Ignition/Fortress Conflict: The system had Ignition/Fortress installed alongside Gazebo Classic, leading to mismatched plugin expectations and instability.
 
-2/Problem Summary
+Solutions Implemented
 
-When launching the dual-arm robot URDF in Gazebo, the process completes successfully:
+Fixed Apt Key: Imported the OSRF GPG key and exported it to /etc/apt/keyrings/gazebo.gpg, resolving signature verification errors.
 
-robot_state_publisher reports all segments (floor_link, left/right arms, wrists, etc.).
+Removed Ignition/Fortress: Purged Ignition Gazebo packages to avoid conflicts and standardized on Gazebo Classic.
 
-spawn_entity.py confirms: Successfully spawned entity [fairino_dual_arms].
+Simplified URDF: Removed duplicate <gazebo> plugin block and outdated <transmission> tags. Kept only the <ros2_control> block with gazebo_ros2_control/GazeboSystem plugin.
 
-robot_description parameter is present in robot_state_publisher.
+Created Custom World File: Added my_empty_world.world with ground plane, sun, and ROS plugins (gazebo_ros_state, gazebo_link_attacher). This ensures services like /get_entity_state are available.
 
-Despite this, the robot does not appear visually in the Gazebo environment. Gazebo opens, but the dual arms are invisible.
+Improved Launch File: Updated gazebo.launch.py to:
 
-3/Logs
+Process xacro → URDF.
 
-Launch Output
+Spawn the robot entity.
 
-terminal1:~/fairino_ws$ ros2 launch fairino_description gazebo.launch.py
-[INFO] [launch]: All log files can be found below /home/souey-maher/.ros/log/2026-04-24-17-54-38-608507-Souey-Maher-95144
-[INFO] [launch]: Default logging verbosity is set to INFO
-[INFO] [gzserver-1]: process started with pid [95145]
-[INFO] [gzclient-2]: process started with pid [95147]
-[INFO] [robot_state_publisher-3]: process started with pid [95149]
-[INFO] [spawn_entity.py-4]: process started with pid [95151]
-[robot_state_publisher-3] [INFO] [1777049679.036459269] [robot_state_publisher]: got segment floor_link
-[robot_state_publisher-3] [INFO] [1777049679.036594999] [robot_state_publisher]: got segment left_base_link
-[robot_state_publisher-3] [INFO] [1777049679.036599708] [robot_state_publisher]: got segment left_forearm_link
-[robot_state_publisher-3] [INFO] [1777049679.036602462] [robot_state_publisher]: got segment left_shoulder_link
-[robot_state_publisher-3] [INFO] [1777049679.036604901] [robot_state_publisher]: got segment left_upperarm_link
-[robot_state_publisher-3] [INFO] [1777049679.036607222] [robot_state_publisher]: got segment left_wrist1_link
-[robot_state_publisher-3] [INFO] [1777049679.036609490] [robot_state_publisher]: got segment left_wrist2_link
-[robot_state_publisher-3] [INFO] [1777049679.036611617] [robot_state_publisher]: got segment left_wrist3_link
-[robot_state_publisher-3] [INFO] [1777049679.036613631] [robot_state_publisher]: got segment right_base_link
-[robot_state_publisher-3] [INFO] [1777049679.036615759] [robot_state_publisher]: got segment right_forearm_link
-[robot_state_publisher-3] [INFO] [1777049679.036618080] [robot_state_publisher]: got segment right_shoulder_link
-[robot_state_publisher-3] [INFO] [1777049679.036620202] [robot_state_publisher]: got segment right_upperarm_link
-[robot_state_publisher-3] [INFO] [1777049679.036622407] [robot_state_publisher]: got segment right_wrist1_link
-[robot_state_publisher-3] [INFO] [1777049679.036624399] [robot_state_publisher]: got segment right_wrist2_link
-[robot_state_publisher-3] [INFO] [1777049679.036626396] [robot_state_publisher]: got segment right_wrist3_link
-[robot_state_publisher-3] [INFO] [1777049679.036628406] [robot_state_publisher]: got segment world
-[spawn_entity.py-4] [INFO] [1777049679.638632986] [spawn_entity]: Spawn Entity started
-[spawn_entity.py-4] [INFO] [1777049679.638837510] [spawn_entity]: Loading entity published on topic robot_description
-[spawn_entity.py-4] [INFO] [1777049679.645197509] [spawn_entity]: Waiting for entity xml on robot_description
-[spawn_entity.py-4] [INFO] [1777049679.656734103] [spawn_entity]: Waiting for service /spawn_entity, timeout = 30
-[spawn_entity.py-4] [INFO] [1777049679.657000927] [spawn_entity]: Waiting for service /spawn_entity
-[spawn_entity.py-4] [INFO] [1777049680.169412861] [spawn_entity]: Calling service /spawn_entity
-[spawn_entity.py-4] [INFO] [1777049680.415624666] [spawn_entity]: Spawn status: SpawnEntity: Successfully spawned entity [fairino_dual_arms]
-[INFO] [spawn_entity.py-4]: process has finished cleanly [pid 95151]
+Load Gazebo with either my_empty_world.world or fallback to empty.world if missing.
 
-Parameter Check
+Current Status
 
-terminal2:~/fairino_ws$ ros2 param list /robot_state_publisher
-  frame_prefix
-  ignore_timestamp
-  publish_frequency
-  qos_overrides./joint_states.subscription.depth
-  qos_overrides./joint_states.subscription.history
-  qos_overrides./joint_states.subscription.reliability
-  qos_overrides./parameter_events.publisher.depth
-  qos_overrides./parameter_events.publisher.durability
-  qos_overrides./parameter_events.publisher.history
-  qos_overrides./parameter_events.publisher.reliability
-  qos_overrides./tf.publisher.depth
-  qos_overrides./tf.publisher.durability
-  qos_overrides./tf.publisher.history
-  qos_overrides./tf.publisher.reliability
-  qos_overrides./tf_static.publisher.depth
-  qos_overrides./tf_static.publisher.history
-  qos_overrides./tf_static.publisher.reliability
-  robot_description
-  use_sim_time
+Gazebo Classic loads the URDF without crashing.
 
-This confirms the URDF is loaded.
+The robot entity spawns successfully.
 
-4/Test with Box URDF
+Custom world file provides ROS services and a stable environment.
 
-To isolate the issue, a simple box URDF (test_box.urdf.xacro) was launched:
+Next Steps
 
-ros2 launch fairino_description gazebo.launch.py urdf_file:=test_box.urdf.xacro
+Extend URDF macros to support dual arms with prefixes (left_, right_).
 
-Gazebo loaded instantly.
+Update <ros2_control> block to include both sets of joints.
 
-The box appeared correctly.
+Add ros2_controllers.yaml with two trajectory controllers (left and right arms).
 
-This proves the URDF pipeline and Gazebo setup are correct. The problem is specific to the robot meshes.
+Test trajectory execution and integrate with MoveIt2.
 
-5/Likely Causes
+Usage
 
-Mesh format issues
+colcon build
+source install/setup.bash
+ros2 launch fairino_description gazebo.launch.py
 
-STL files may be binary or malformed.
+Notes
 
-DAE exports may lack triangulation or transforms.
+Ensure gazebo_ros_pkgs is installed for ROS 2 integration.
 
-Scale mismatch
+Place custom world files in fairino_description/worlds/.
 
-CAD exports often use millimeters, while Gazebo expects meters.
+Controllers must be spawned after robot entity is loaded:
 
-Robot may be microscopic or gigantic, appearing outside the camera view.
-
-Origin offset
-
-Mesh geometry may be far from (0,0,0), spawning outside the visible area.
-
-High polygon count
-
-Large STL meshes slow Gazebo startup and may fail to render.
-
-6/Current Status
-
-URDF loads successfully.
-
-Entity spawns successfully.
-
-Box URDF test passes.
-
-Dual-arm robot meshes fail to render.
-
-7/Conclusion
-
-The URDF and launch pipeline are correct. The invisibility issue is caused by mesh problems (format, scale, or complexity). Re-exporting and simplifying meshes with correct transforms is required to resolve the problem.
-
-Note: This document is intended for GitHub issue tracking. The solution is not yet found. The box URDF test confirms the pipeline works, but the dual-arm robot remains invisible in Gazebo due to mesh issues.
+ros2 run controller_manager spawner joint_state_broadcaster
+ros2 run controller_manager spawner left_arm_controller
+ros2 run controller_manager spawner right_arm_controller

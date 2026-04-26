@@ -57,72 +57,58 @@
   <!-- ros2_control (single system with 12 joints) -->
 
   <ros2_control name="dual_arms_system" type="system">
-    <joint name="${left_prefix}joint1">
+    <hardware>
+      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+    </hardware>
+    <!-- Left arm joints -->
+    <joint name="${left_prefix}j1">
       <command_interface name="position"/>
       <state_interface name="position"/>
-      
     </joint>
-    <joint name="${left_prefix}joint2">
+    <joint name="${left_prefix}j2">
       <command_interface name="position"/>
       <state_interface name="position"/>
-      
     </joint>
-    <joint name="${left_prefix}joint3">
+    <joint name="${left_prefix}j3">
       <command_interface name="position"/>
       <state_interface name="position"/>
-      
     </joint>
-    <joint name="${left_prefix}joint4">
+    <joint name="${left_prefix}j4">
       <command_interface name="position"/>
       <state_interface name="position"/>
-      
     </joint>
-    <joint name="${left_prefix}joint5">
+    <joint name="${left_prefix}j5">
       <command_interface name="position"/>
       <state_interface name="position"/>
-      
     </joint>
-    <joint name="${left_prefix}joint6">
+    <joint name="${left_prefix}j6">
       <command_interface name="position"/>
       <state_interface name="position"/>
-      
     </joint>
-
-    <joint name="${right_prefix}joint1">
+    <!-- Right arm joints -->
+    <joint name="${right_prefix}j1">
       <command_interface name="position"/>
       <state_interface name="position"/>
-      
     </joint>
-    <joint name="${right_prefix}joint2">
+    <joint name="${right_prefix}j2">
       <command_interface name="position"/>
       <state_interface name="position"/>
-      
     </joint>
-    <joint name="${right_prefix}joint3">
+    <joint name="${right_prefix}j3">
       <command_interface name="position"/>
       <state_interface name="position"/>
-      
     </joint>
-    <joint name="${right_prefix}joint4">
+    <joint name="${right_prefix}j4">
       <command_interface name="position"/>
       <state_interface name="position"/>
-      
     </joint>
-    <joint name="${right_prefix}joint5">
+    <joint name="${right_prefix}j5">
       <command_interface name="position"/>
       <state_interface name="position"/>
-      
     </joint>
-    <joint name="${right_prefix}joint6">
+    <joint name="${right_prefix}j6">
       <command_interface name="position"/>
       <state_interface name="position"/>
-      
     </joint>
   </ros2_control>
-
-  <!-- <gazebo>
-    <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
-      <parameters>${ros2_controllers_file}</parameters>
-    </plugin>
-  </gazebo> -->
 </robot>

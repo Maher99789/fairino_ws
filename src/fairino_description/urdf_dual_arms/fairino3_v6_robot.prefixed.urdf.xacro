@@ -23,7 +23,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/base_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/base_link.STL" />
       </geometry>
       <material
         name="">
@@ -37,7 +37,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/base_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/base_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -63,7 +63,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/shoulder_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/shoulder_link.STL" />
       </geometry>
       <material
         name="">
@@ -77,7 +77,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/shoulder_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/shoulder_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -132,7 +132,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/upperarm_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/upperarm_link.STL" />
       </geometry>
       <material
         name="">
@@ -146,7 +146,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/upperarm_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/upperarm_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -201,7 +201,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/forearm_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/forearm_link.STL" />
       </geometry>
       <material
         name="">
@@ -215,7 +215,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/forearm_link.STL" />
+          filename="package://fairino_description)/meshes/fairino3_v6/forearm_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -270,7 +270,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/wrist1_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/wrist1_link.STL" />
       </geometry>
       <material
         name="">
@@ -284,7 +284,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/wrist1_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/wrist1_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -339,7 +339,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/wrist2_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/wrist2_link.STL" />
       </geometry>
       <material
         name="">
@@ -353,7 +353,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/wrist2_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/wrist2_link.STL" />
       </geometry>
     </collision>
   </link>
@@ -408,7 +408,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/wrist3_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/wrist3_link.STL" />
       </geometry>
       <material
         name="">
@@ -422,7 +422,7 @@
         rpy="0 0 0" />
       <geometry>
         <mesh
-          filename="package://fairino_description/meshes/fairino3_v6/wrist3_link.STL" />
+          filename="file:///$(find fairino_description)/meshes/fairino3_v6/wrist3_link.STL" />
       </geometry>
     </collision>
   </link>

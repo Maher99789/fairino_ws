@@ -6,12 +6,11 @@
 /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/meshes/fairino3_v6/wrist1_link.STL
 /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/meshes/fairino3_v6/wrist2_link.STL
 /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/meshes/fairino3_v6/wrist3_link.STL
-/home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/urdf/fairino3_v6.urdf
+/home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/urdf/fairino3_v6.urdf.xacro
 /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/urdf_dual_arms/fairino3_dual_arms.urdf.xacro
 /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/urdf_dual_arms/fairino3_v6_robot.prefixed.urdf.xacro
 /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/urdf_dual_arms/initial_positions.yaml
 /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/urdf_dual_arms/ros2_controllers.yaml
-/home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/urdf_dual_arms/test_box.urdf.xacro
 /home/souey-maher/fairino_ws/install/fairino_description/share/fairino_description/launch/gazebo.launch.py
 /home/souey-maher/fairino_ws/install/fairino_description/share/ament_index/resource_index/package_run_dependencies/fairino_description
 /home/souey-maher/fairino_ws/install/fairino_description/share/ament_index/resource_index/parent_prefix_path/fairino_description
