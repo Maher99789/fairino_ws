@@ -21,7 +21,7 @@ def generate_launch_description():
 
     gazebo = IncludeLaunchDescription(
         PythonLaunchDescriptionSource(
-            [os.path.join(get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')]
+            os.path.join(get_package_share_directory('gazebo_ros'), 'launch', 'gazebo.launch.py')
         ),
         launch_arguments={'world': world}.items(),
     )
@@ -30,16 +30,16 @@ def generate_launch_description():
     rsp = Node(
         package='robot_state_publisher',
         executable='robot_state_publisher',
-        output='screen',
         parameters=[{'robot_description': robot_description}],
+        output='screen'
     )
 
-    # Spawn entity
+    # Spawn entity in Gazebo
     spawn = Node(
         package='gazebo_ros',
         executable='spawn_entity.py',
         arguments=['-entity', 'fairino_dual_arms', '-topic', 'robot_description'],
-        output='screen',
+        output='screen'
     )
 
     return LaunchDescription([gazebo, rsp, spawn])

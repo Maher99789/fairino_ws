@@ -1,69 +1,84 @@
-Gazebo Classic Dual Arms Setup
-
+Dual Arm Robot Simulation – ROS 2 Humble
 Overview
 
-This repository documents the process of setting up and simulating a dual-arm robot in Gazebo Classic (Gazebo 11) with ROS 2 Humble. The URDF was exported from SolidWorks and adapted for ROS 2 control integration. The main goal was to achieve a stable simulation environment where the robot loads correctly, controllers can be applied, and Gazebo no longer crashes.
+This workspace (fairino_ws) integrates a dual-arm robot into Gazebo using ROS 2 Humble.
+Controllers are managed via ros2_control and controller_manager.
+Installation
 
-Problems Encountered
+Clone the repository and build:
+bash
 
-Apt Key Errors: Initially, the OSRF repository key was missing, causing NO_PUBKEY errors during apt update.
-
-Plugin Crashes: The URDF contained both <ros2_control> and <gazebo> plugin blocks loading libgazebo_ros2_control.so. This duplication caused Gazebo to crash with exit code 255.
-
-World File Missing: Gazebo attempted to load my_empty_world.world but the file did not exist, forcing a fallback to the default empty.world.
-
-Ignition/Fortress Conflict: The system had Ignition/Fortress installed alongside Gazebo Classic, leading to mismatched plugin expectations and instability.
-
-Solutions Implemented
-
-Fixed Apt Key: Imported the OSRF GPG key and exported it to /etc/apt/keyrings/gazebo.gpg, resolving signature verification errors.
-
-Removed Ignition/Fortress: Purged Ignition Gazebo packages to avoid conflicts and standardized on Gazebo Classic.
-
-Simplified URDF: Removed duplicate <gazebo> plugin block and outdated <transmission> tags. Kept only the <ros2_control> block with gazebo_ros2_control/GazeboSystem plugin.
-
-Created Custom World File: Added my_empty_world.world with ground plane, sun, and ROS plugins (gazebo_ros_state, gazebo_link_attacher). This ensures services like /get_entity_state are available.
-
-Improved Launch File: Updated gazebo.launch.py to:
-
-Process xacro → URDF.
-
-Spawn the robot entity.
-
-Load Gazebo with either my_empty_world.world or fallback to empty.world if missing.
-
-Current Status
-
-Gazebo Classic loads the URDF without crashing.
-
-The robot entity spawns successfully.
-
-Custom world file provides ROS services and a stable environment.
-
-Next Steps
-
-Extend URDF macros to support dual arms with prefixes (left_, right_).
-
-Update <ros2_control> block to include both sets of joints.
-
-Add ros2_controllers.yaml with two trajectory controllers (left and right arms).
-
-Test trajectory execution and integrate with MoveIt2.
-
-Usage
-
+cd ~/fairino_ws
 colcon build
 source install/setup.bash
+
+Ensure the following packages are installed:
+
+    ros-humble-ros2-control
+
+    ros-humble-ros2-controllers
+
+    ros-humble-controller-manager
+
+    ros-humble-position-controllers
+
+    ros-humble-joint-state-broadcaster
+
+Check with:
+bash
+
+apt list --installed | grep ros-humble
+
+Launch Simulation
+
+Start Gazebo with the dual-arm robot:
+bash
+
 ros2 launch fairino_description gazebo.launch.py
 
-Notes
+Controller Spawning
 
-Ensure gazebo_ros_pkgs is installed for ROS 2 integration.
+Spawn controllers manually:
+bash
 
-Place custom world files in fairino_description/worlds/.
+ros2 run controller_manager spawner joint_state_broadcaster --controller-manager /controller_manager
+ros2 run controller_manager spawner dual_arm_position_controller --controller-manager /controller_manager
 
-Controllers must be spawned after robot entity is loaded:
+Example Output
+text
 
-ros2 run controller_manager spawner joint_state_broadcaster
-ros2 run controller_manager spawner left_arm_controller
-ros2 run controller_manager spawner right_arm_controller
+[INFO] [spawner_joint_state_broadcaster]: Loaded joint_state_broadcaster
+[INFO] [spawner_joint_state_broadcaster]: Configured and activated joint_state_broadcaster
+[INFO] [spawner_dual_arm_position_controller]: Loaded dual_arm_position_controller
+[ERROR] [spawner_dual_arm_position_controller]: Failed to configure controller
+
+Listing controllers:
+bash
+
+ros2 control list_controllers
+
+Result:
+text
+
+joint_state_broadcaster      joint_state_broadcaster/JointStateBroadcaster      active
+dual_arm_position_controller position_controllers/JointGroupPositionController  unconfigured
+
+Problem Explanation
+
+    The dual_arm_position_controller loads but remains unconfigured.
+
+    This indicates the plugin is found, but it cannot bind to the hardware interfaces.
+
+    Root cause: URDF <ros2_control> block syntax.
+    In ROS 2 Humble, each joint must declare interfaces using plural tags:
+
+xml
+
+<command_interfaces>
+  <position/>
+</command_interfaces>
+<state_interfaces>
+  <position/>
+</state_interfaces>
+
+If singular tags (<command_interface name="position"/>) are used, the controller loads but fails to configure.

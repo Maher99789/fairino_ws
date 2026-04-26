@@ -4,9 +4,9 @@
   <xacro:arg name="right_prefix" default="right_"/>
   <xacro:arg name="arm_spacing" default="0.75"/>
   <xacro:arg name="initial_positions_file"
-           default="$(find fairino_description)/urdf_dual_arms/initial_positions.yaml"/>
+           default="$(find fairino_description)/config/initial_positions.yaml"/>
   <xacro:arg name="ros2_controllers_file"
-           default="$(find fairino_description)/urdf_dual_arms/ros2_controllers.yaml"/>
+           default="$(find fairino_description)/config/ros2_controllers.yaml"/>
 
   <xacro:arg name="floor_size_x" default="4.0"/>
   <xacro:arg name="floor_size_y" default="4.0"/>
@@ -57,58 +57,69 @@
   <!-- ros2_control (single system with 12 joints) -->
 
   <ros2_control name="dual_arms_system" type="system">
-    <hardware>
-      <plugin>gazebo_ros2_control/GazeboSystem</plugin>
-    </hardware>
-    <!-- Left arm joints -->
-    <joint name="${left_prefix}j1">
-      <command_interface name="position"/>
-      <state_interface name="position"/>
-    </joint>
-    <joint name="${left_prefix}j2">
-      <command_interface name="position"/>
-      <state_interface name="position"/>
-    </joint>
-    <joint name="${left_prefix}j3">
-      <command_interface name="position"/>
-      <state_interface name="position"/>
-    </joint>
-    <joint name="${left_prefix}j4">
-      <command_interface name="position"/>
-      <state_interface name="position"/>
-    </joint>
-    <joint name="${left_prefix}j5">
-      <command_interface name="position"/>
-      <state_interface name="position"/>
-    </joint>
-    <joint name="${left_prefix}j6">
-      <command_interface name="position"/>
-      <state_interface name="position"/>
-    </joint>
-    <!-- Right arm joints -->
-    <joint name="${right_prefix}j1">
-      <command_interface name="position"/>
-      <state_interface name="position"/>
-    </joint>
-    <joint name="${right_prefix}j2">
-      <command_interface name="position"/>
-      <state_interface name="position"/>
-    </joint>
-    <joint name="${right_prefix}j3">
-      <command_interface name="position"/>
-      <state_interface name="position"/>
-    </joint>
-    <joint name="${right_prefix}j4">
-      <command_interface name="position"/>
-      <state_interface name="position"/>
-    </joint>
-    <joint name="${right_prefix}j5">
-      <command_interface name="position"/>
-      <state_interface name="position"/>
-    </joint>
-    <joint name="${right_prefix}j6">
-      <command_interface name="position"/>
-      <state_interface name="position"/>
-    </joint>
+  <hardware>
+    <plugin>gazebo_ros2_control/GazeboSystem</plugin>
+  </hardware>
+
+  <!-- Left arm joints -->
+  <joint name="${left_prefix}joint1">
+    <command_interfaces>
+      <position/>
+    </command_interfaces>
+    <state_interfaces>
+      <position/>
+    </state_interfaces>
+  </joint>
+  <joint name="${left_prefix}joint2">
+    <command_interfaces><position/></command_interfaces>
+    <state_interfaces><position/></state_interfaces>
+  </joint>
+  <joint name="${left_prefix}joint3">
+    <command_interfaces><position/></command_interfaces>
+    <state_interfaces><position/></state_interfaces>
+  </joint>
+  <joint name="${left_prefix}joint4">
+    <command_interfaces><position/></command_interfaces>
+    <state_interfaces><position/></state_interfaces>
+  </joint>
+  <joint name="${left_prefix}joint5">
+    <command_interfaces><position/></command_interfaces>
+    <state_interfaces><position/></state_interfaces>
+  </joint>
+  <joint name="${left_prefix}joint6">
+    <command_interfaces><position/></command_interfaces>
+    <state_interfaces><position/></state_interfaces>
+  </joint>
+
+  <!-- Right arm joints -->
+  <joint name="${right_prefix}joint1">
+    <command_interfaces><position/></command_interfaces>
+    <state_interfaces><position/></state_interfaces>
+  </joint>
+  <joint name="${right_prefix}joint2">
+    <command_interfaces><position/></command_interfaces>
+    <state_interfaces><position/></state_interfaces>
+  </joint>
+  <joint name="${right_prefix}joint3">
+    <command_interfaces><position/></command_interfaces>
+    <state_interfaces><position/></state_interfaces>
+  </joint>
+  <joint name="${right_prefix}joint4">
+    <command_interfaces><position/></command_interfaces>
+    <state_interfaces><position/></state_interfaces>
+  </joint>
+  <joint name="${right_prefix}joint5">
+    <command_interfaces><position/></command_interfaces>
+    <state_interfaces><position/></state_interfaces>
+  </joint>
+  <joint name="${right_prefix}joint6">
+    <command_interfaces><position/></command_interfaces>
+    <state_interfaces><position/></state_interfaces>
+  </joint>
   </ros2_control>
+  <gazebo>
+    <plugin name="gazebo_ros2_control" filename="libgazebo_ros2_control.so">
+      <parameters>$(find fairino_description)/config/ros2_controllers.yaml</parameters>
+    </plugin>
+  </gazebo>
 </robot>

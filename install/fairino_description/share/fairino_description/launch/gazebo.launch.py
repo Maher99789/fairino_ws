@@ -1,1 +1,0 @@
-/home/souey-maher/fairino_ws/src/fairino_description/launch/gazebo.launch.py

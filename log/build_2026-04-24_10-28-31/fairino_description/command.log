@@ -1,2 +1,0 @@
-Invoking command in '/home/souey-maher/fairino_ws/build/fairino_description': /usr/bin/cmake /home/souey-maher/fairino_ws/src/fairino_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/souey-maher/fairino_ws/install/fairino_description
-Invoked command in '/home/souey-maher/fairino_ws/build/fairino_description' returned '1': /usr/bin/cmake /home/souey-maher/fairino_ws/src/fairino_description -DAMENT_CMAKE_SYMLINK_INSTALL=1 -DCMAKE_INSTALL_PREFIX=/home/souey-maher/fairino_ws/install/fairino_description
