@@ -42,4 +42,23 @@ def generate_launch_description():
         output='screen'
     )
 
-    return LaunchDescription([gazebo, rsp, spawn])
+    # Controller Spawners
+    joint_state_broadcaster_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["joint_state_broadcaster", "--controller-manager", "/controller_manager"],
+    )
+
+    dual_arm_position_controller_spawner = Node(
+        package="controller_manager",
+        executable="spawner",
+        arguments=["dual_arm_position_controller", "--controller-manager", "/controller_manager"],
+    )
+
+    return LaunchDescription([
+        gazebo,
+        rsp,
+        spawn,
+        joint_state_broadcaster_spawner,
+        dual_arm_position_controller_spawner
+    ])
