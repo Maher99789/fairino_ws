@@ -10,19 +10,12 @@ find_package(ament_cmake REQUIRED)
 find_package(urdf REQUIRED)
 #find_package(xacro REQUIRED)
 
-install(DIRECTORY meshes
-  DESTINATION share/${PROJECT_NAME}
+install(PROGRAMS
+  scripts/dual_arm_mover.py
+  DESTINATION lib/${PROJECT_NAME}
 )
 
-install(DIRECTORY config
-  DESTINATION share/${PROJECT_NAME}
-)
-
-install(DIRECTORY urdf
-  DESTINATION share/${PROJECT_NAME}
-)
-
-install(DIRECTORY urdf_dual_arms launch
+install(DIRECTORY urdf_dual_arms launch rviz urdf config meshes
   DESTINATION share/${PROJECT_NAME}
 )
 
